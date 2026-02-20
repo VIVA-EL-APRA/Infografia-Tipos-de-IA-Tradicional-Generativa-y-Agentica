@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evolución de la Inteligencia Artificial</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                    },
+                    colors: {
+                        darkbg: '#09090b',
+                        panel: '#18181b',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #09090b; color: #f8fafc; overflow-x: hidden; }
+        
+        /* Glass y Glow effects */
+        .glass-panel {
+            background: rgba(24, 24, 27, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-hover-trad:hover { box-shadow: 0 0 40px -10px rgba(59, 130, 246, 0.3); border-color: rgba(59, 130, 246, 0.3); }
+        .card-hover-gen:hover { box-shadow: 0 0 40px -10px rgba(168, 85, 247, 0.3); border-color: rgba(168, 85, 247, 0.3); }
+        .card-hover-agent:hover { box-shadow: 0 0 40px -10px rgba(16, 185, 129, 0.3); border-color: rgba(16, 185, 129, 0.3); }
+
+        .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #09090b; }
+        ::-webkit-scrollbar-thumb { background: #27272a; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #3f3f46; }
+
+        /* Animaciones on Scroll */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        
+        /* Efecto de escritura */
+        .cursor::after {
+            content: '|';
+            animation: blink 1s step-start infinite;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+    </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col font-sans selection:bg-indigo-500/30">
+
+    <!-- Ambient Background -->
+    <div class="fixed inset-0 z-[-1] overflow-hidden pointer-events-none">
+        <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-blue-900/20 blur-[120px]"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-emerald-900/20 blur-[120px]"></div>
+        <div class="absolute top-[40%] left-[40%] w-[20%] h-[20%] rounded-full bg-purple-900/20 blur-[100px]"></div>
+    </div>
+
+    <!-- Header Section -->
+    <header class="max-w-7xl mx-auto w-full text-center py-16 px-4 reveal active">
+        <div class="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full border border-white/10 bg-white/5 text-sm font-medium text-slate-300 shadow-xl backdrop-blur-md">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+            </span>
+            Infografía Interactiva
+        </div>
+        <h1 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight leading-tight">
+            La Evolución de la <br class="hidden md:block"/>
+            <span class="bg-gradient-to-r from-blue-400 via-purple-400 to-emerald-400 gradient-text">Inteligencia Artificial</span>
+        </h1>
+        <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
+            Explora de manera interactiva el viaje desde los sistemas basados en reglas hasta los agentes autónomos capaces de ejecutar acciones.
+        </p>
+    </header>
+
+    <!-- Main Content Grid -->
+    <main class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-3 gap-6 px-4 pb-20">
+
+        <!-- ==========================================
+             1️⃣ IA TRADICIONAL
+        =========================================== -->
+        <article class="glass-panel card-hover-trad rounded-3xl p-6 md:p-8 relative transition-all duration-500 reveal delay-100 flex flex-col h-full">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-600 to-cyan-400"></div>
+            
+            <div class="flex items-center gap-4 mb-6">
+                <div class="w-12 h-12 rounded-2xl bg-blue-500/10 flex items-center justify-center border border-blue-500/20 text-blue-400 text-xl shadow-[0_0_15px_rgba(59,130,246,0.15)]">
+                    <i class="fa-solid fa-code-branch"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-white tracking-tight">IA Tradicional</h2>
+            </div>
+
+            <p class="text-slate-300 text-sm mb-6 leading-relaxed flex-grow">
+                <strong class="text-blue-300">Basada en Reglas:</strong> Utiliza lógica programada explícitamente y modelos estadísticos. <span class="opacity-70">No crea contenido, solo clasifica o predice según parámetros definidos.</span>
+            </p>
+
+            <div class="space-y-4 mb-6">
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 rounded-full bg-blue-950/50 border border-blue-900 text-xs text-blue-200">Machine Learning</span>
+                    <span class="px-3 py-1 rounded-full bg-blue-950/50 border border-blue-900 text-xs text-blue-200">Árboles de decisión</span>
+                    <span class="px-3 py-1 rounded-full bg-blue-950/50 border border-blue-900 text-xs text-blue-200">Regresión</span>
+                </div>
+                <ul class="text-sm text-slate-400 space-y-2">
+                    <li><i class="fa-solid fa-check text-blue-500 mr-2"></i> Filtros de spam de Google</li>
+                    <li><i class="fa-solid fa-check text-blue-500 mr-2"></i> Sistemas de recomendación básicos</li>
+                </ul>
+            </div>
+
+            <!-- INTERACCIÓN 1 -->
+            <div class="mt-auto bg-black/40 rounded-xl p-1 border border-white/5">
+                <div class="bg-zinc-900 rounded-lg p-4 font-mono text-sm">
+                    <div class="flex items-center justify-between mb-3 border-b border-white/10 pb-2">
+                        <span class="text-xs text-slate-500"><i class="fa-brands fa-python mr-1"></i> main.py</span>
+                        <button onclick="runTradSimulation()" class="text-xs bg-blue-600 hover:bg-blue-500 text-white px-3 py-1 rounded transition-colors flex items-center gap-1">
+                            <i class="fa-solid fa-play text-[10px]"></i> Ejecutar
+                        </button>
+                    </div>
+                    <div class="text-slate-300 leading-relaxed">
+                        <span class="text-pink-400">edad</span> = <input type="number" id="trad-age" value="20" class="w-12 bg-zinc-800 border border-zinc-700 rounded px-1 text-orange-300 outline-none focus:border-blue-500 text-center inline-block" min="1" max="99"> <br>
+                        <span class="text-blue-400">if</span> edad >= <span class="text-orange-300">18</span>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;print(<span class="text-green-400">"Mayor"</span>)<br>
+                        <span class="text-blue-400">else</span>:<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;print(<span class="text-green-400">"Menor"</span>)
+                    </div>
+                    <!-- Consola Salida -->
+                    <div class="mt-3 bg-black rounded p-2 border border-zinc-800 text-xs flex items-center gap-2">
+                        <span class="text-slate-500">>_</span>
+                        <span id="trad-output" class="text-slate-300 transition-all">Esperando ejecución...</span>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- ==========================================
+             2️⃣ IA GENERATIVA
+        =========================================== -->
+        <article class="glass-panel card-hover-gen rounded-3xl p-6 md:p-8 relative transition-all duration-500 reveal delay-200 flex flex-col h-full">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-purple-600 to-pink-400"></div>
+            
+            <div class="flex items-center gap-4 mb-6">
+                <div class="w-12 h-12 rounded-2xl bg-purple-500/10 flex items-center justify-center border border-purple-500/20 text-purple-400 text-xl shadow-[0_0_15px_rgba(168,85,247,0.15)]">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-white tracking-tight">IA Generativa</h2>
+            </div>
+
+            <p class="text-slate-300 text-sm mb-6 leading-relaxed flex-grow">
+                <strong class="text-purple-300">Creadores de Contenido:</strong> Capaz de generar texto, imágenes o código original. <span class="opacity-70">Aprende patrones complejos a partir de datos no estructurados usando Deep Learning.</span>
+            </p>
+
+            <div class="space-y-4 mb-6">
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 rounded-full bg-purple-950/50 border border-purple-900 text-xs text-purple-200">LLMs</span>
+                    <span class="px-3 py-1 rounded-full bg-purple-950/50 border border-purple-900 text-xs text-purple-200">Transformers</span>
+                    <span class="px-3 py-1 rounded-full bg-purple-950/50 border border-purple-900 text-xs text-purple-200">Difusión</span>
+                </div>
+                <ul class="text-sm text-slate-400 space-y-2">
+                    <li><i class="fa-solid fa-check text-purple-500 mr-2"></i> ChatGPT / Gemini (Textos)</li>
+                    <li><i class="fa-solid fa-check text-purple-500 mr-2"></i> Midjourney / DALL·E (Imágenes)</li>
+                </ul>
+            </div>
+
+            <!-- INTERACCIÓN 2 -->
+            <div class="mt-auto bg-black/40 rounded-xl p-1 border border-white/5">
+                <div class="bg-zinc-900 rounded-lg p-4 text-sm flex flex-col h-full">
+                    <div class="flex gap-2 mb-3">
+                        <input type="text" id="gen-input" value="¿Qué es la ciberseguridad en 10 palabras?" class="w-full bg-zinc-800 border border-zinc-700 rounded-md px-3 py-2 text-xs text-white focus:outline-none focus:border-purple-500 transition-colors" placeholder="Escribe un prompt...">
+                        <button id="gen-btn" onclick="runGenSimulation()" class="bg-purple-600 hover:bg-purple-500 text-white px-3 py-2 rounded-md transition-colors flex items-center justify-center min-w-[40px]">
+                            <i class="fa-solid fa-paper-plane text-xs"></i>
+                        </button>
+                    </div>
+                    
+                    <!-- Chat Output -->
+                    <div class="bg-black/60 rounded-md p-3 border border-zinc-800 min-h-[80px] text-xs relative overflow-hidden flex flex-col justify-center">
+                        <div id="gen-loading" class="hidden absolute inset-0 flex items-center justify-center bg-black/80 backdrop-blur-sm z-10">
+                            <i class="fa-solid fa-circle-notch fa-spin text-purple-500 text-xl"></i>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <div class="w-5 h-5 rounded-full bg-purple-500/20 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                <i class="fa-solid fa-robot text-[10px] text-purple-400"></i>
+                            </div>
+                            <p id="gen-output" class="text-slate-300 leading-relaxed font-mono">Esperando prompt...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- ==========================================
+             3️⃣ IA AGÉNTICA
+        =========================================== -->
+        <article class="glass-panel card-hover-agent rounded-3xl p-6 md:p-8 relative transition-all duration-500 reveal delay-300 flex flex-col h-full lg:col-span-1 md:col-span-2">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-600 to-green-400"></div>
+            
+            <div class="flex items-center gap-4 mb-6">
+                <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20 text-emerald-400 text-xl shadow-[0_0_15px_rgba(16,185,129,0.15)]">
+                    <i class="fa-solid fa-network-wired"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-white tracking-tight">IA Agéntica</h2>
+            </div>
+
+            <p class="text-slate-300 text-sm mb-6 leading-relaxed flex-grow">
+                <strong class="text-emerald-300">Sistemas Autónomos:</strong> No solo responde, sino que actúa. <span class="opacity-70">Toma decisiones, planifica pasos, usa herramientas externas y APIs para cumplir un objetivo.</span>
+            </p>
+
+            <div class="space-y-4 mb-6">
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 rounded-full bg-emerald-950/50 border border-emerald-900 text-xs text-emerald-200">AutoGPT</span>
+                    <span class="px-3 py-1 rounded-full bg-emerald-950/50 border border-emerald-900 text-xs text-emerald-200">APIs</span>
+                    <span class="px-3 py-1 rounded-full bg-emerald-950/50 border border-emerald-900 text-xs text-emerald-200">Multi-Agente</span>
+                </div>
+                <ul class="text-sm text-slate-400 space-y-2">
+                    <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Asistentes ejecutivos autónomos</li>
+                    <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Automatización de procesos complejos</li>
+                </ul>
+            </div>
+
+            <!-- INTERACCIÓN 3 -->
+            <div class="mt-auto bg-black/40 rounded-xl p-1 border border-white/5">
+                <div class="bg-zinc-900 rounded-lg p-4 text-sm relative overflow-hidden">
+                    <div class="mb-4 flex items-center justify-between">
+                        <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded font-mono border border-slate-700 flex-grow mr-3 truncate" title="Objetivo: Viaje a Cusco con $500">
+                            > Objetivo: Viaje a Cusco
+                        </span>
+                        <button id="agent-btn" onclick="runAgentSimulation()" class="bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1.5 rounded text-xs transition-colors flex-shrink-0 font-medium">
+                            <i class="fa-solid fa-power-off mr-1"></i> Iniciar
+                        </button>
+                    </div>
+
+                    <div class="space-y-3 relative pl-2 before:absolute before:inset-y-0 before:left-3.5 before:w-px before:bg-zinc-800">
+                        <!-- Step 1 -->
+                        <div class="relative flex items-center gap-3 agent-step opacity-50 transition-opacity">
+                            <div class="w-4 h-4 rounded-full bg-zinc-900 border-2 border-zinc-700 flex items-center justify-center z-10 agent-icon-container">
+                                <i class="fa-solid fa-circle text-[8px] text-zinc-700 agent-icon"></i>
+                            </div>
+                            <span class="text-xs text-slate-400 agent-text">Buscar vuelos en API</span>
+                        </div>
+                        <!-- Step 2 -->
+                        <div class="relative flex items-center gap-3 agent-step opacity-50 transition-opacity">
+                            <div class="w-4 h-4 rounded-full bg-zinc-900 border-2 border-zinc-700 flex items-center justify-center z-10 agent-icon-container">
+                                <i class="fa-solid fa-circle text-[8px] text-zinc-700 agent-icon"></i>
+                            </div>
+                            <span class="text-xs text-slate-400 agent-text">Comparar precios y hotel</span>
+                        </div>
+                        <!-- Step 3 -->
+                        <div class="relative flex items-center gap-3 agent-step opacity-50 transition-opacity">
+                            <div class="w-4 h-4 rounded-full bg-zinc-900 border-2 border-zinc-700 flex items-center justify-center z-10 agent-icon-container">
+                                <i class="fa-solid fa-circle text-[8px] text-zinc-700 agent-icon"></i>
+                            </div>
+                            <span class="text-xs text-slate-400 agent-text">Generar itinerario</span>
+                        </div>
+                        <!-- Step 4 -->
+                        <div class="relative flex items-center gap-3 agent-step opacity-50 transition-opacity">
+                            <div class="w-4 h-4 rounded-full bg-zinc-900 border-2 border-zinc-700 flex items-center justify-center z-10 agent-icon-container">
+                                <i class="fa-solid fa-circle text-[8px] text-zinc-700 agent-icon"></i>
+                            </div>
+                            <span class="text-xs text-slate-400 agent-text">Comprar y Enviar Email</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+    </main>
+
+    <!-- Footer / Conclusión -->
+    <footer class="max-w-7xl mx-auto w-full px-4 mb-16 reveal">
+        <div class="glass-panel rounded-3xl p-8 md:p-12 relative overflow-hidden border-t border-t-white/10 text-center">
+            
+            <!-- Deco -->
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
+
+            <h2 class="text-3xl font-bold text-white mb-10 flex items-center justify-center gap-3">
+                <i class="fa-solid fa-chart-line text-indigo-400"></i> Conclusión del Progreso
+            </h2>
+
+            <!-- Timeline Visual Evolutiva -->
+            <div class="relative max-w-4xl mx-auto mb-12">
+                <!-- Linea conectora -->
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-zinc-800 -translate-y-1/2 rounded-full z-0">
+                    <div class="h-full bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 rounded-full w-full"></div>
+                </div>
+
+                <div class="flex flex-col md:flex-row justify-between items-center gap-6 relative z-10">
+                    <!-- Step 1 -->
+                    <div class="bg-zinc-950 border border-blue-500/30 p-4 rounded-2xl w-full md:w-64 shadow-xl">
+                        <div class="w-10 h-10 mx-auto bg-blue-500/20 rounded-full flex items-center justify-center mb-2 text-blue-400">
+                            <i class="fa-solid fa-lock text-sm"></i>
+                        </div>
+                        <h3 class="text-white font-bold mb-1">Tradicional</h3>
+                        <p class="text-xs text-slate-400">Reactiva & Limitada</p>
+                    </div>
+                    
+                    <i class="fa-solid fa-arrow-down text-zinc-600 block md:hidden"></i>
+
+                    <!-- Step 2 -->
+                    <div class="bg-zinc-950 border border-purple-500/30 p-4 rounded-2xl w-full md:w-64 shadow-xl">
+                        <div class="w-10 h-10 mx-auto bg-purple-500/20 rounded-full flex items-center justify-center mb-2 text-purple-400">
+                            <i class="fa-solid fa-brain text-sm"></i>
+                        </div>
+                        <h3 class="text-white font-bold mb-1">Generativa</h3>
+                        <p class="text-xs text-slate-400">Creativa & Adaptable</p>
+                    </div>
+
+                    <i class="fa-solid fa-arrow-down text-zinc-600 block md:hidden"></i>
+
+                    <!-- Step 3 -->
+                    <div class="bg-zinc-950 border border-emerald-500/30 p-4 rounded-2xl w-full md:w-64 shadow-xl transform md:scale-110 shadow-[0_0_30px_rgba(16,185,129,0.1)]">
+                        <div class="w-10 h-10 mx-auto bg-emerald-500/20 rounded-full flex items-center justify-center mb-2 text-emerald-400 animate-pulse-slow">
+                            <i class="fa-solid fa-bolt text-sm"></i>
+                        </div>
+                        <h3 class="text-white font-bold mb-1">Agéntica</h3>
+                        <p class="text-xs text-emerald-300">Autónoma & Ejecutora</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Impact Metrics -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+                <div class="bg-white/5 hover:bg-white/10 transition-colors p-4 rounded-xl border border-white/5 flex flex-col items-center group">
+                    <i class="fa-solid fa-robot text-2xl mb-2 text-indigo-400 group-hover:scale-110 transition-transform"></i>
+                    <span class="text-xs font-semibold text-slate-300 uppercase tracking-widest">Autonomía</span>
+                </div>
+                <div class="bg-white/5 hover:bg-white/10 transition-colors p-4 rounded-xl border border-white/5 flex flex-col items-center group">
+                    <i class="fa-solid fa-layer-group text-2xl mb-2 text-pink-400 group-hover:scale-110 transition-transform"></i>
+                    <span class="text-xs font-semibold text-slate-300 uppercase tracking-widest">Complejidad</span>
+                </div>
+                <div class="bg-white/5 hover:bg-white/10 transition-colors p-4 rounded-xl border border-white/5 flex flex-col items-center group">
+                    <i class="fa-solid fa-code-merge text-2xl mb-2 text-cyan-400 group-hover:scale-110 transition-transform"></i>
+                    <span class="text-xs font-semibold text-slate-300 uppercase tracking-widest text-center">Decisión</span>
+                </div>
+                <div class="bg-white/5 hover:bg-white/10 transition-colors p-4 rounded-xl border border-white/5 flex flex-col items-center group">
+                    <i class="fa-solid fa-earth-americas text-2xl mb-2 text-emerald-400 group-hover:scale-110 transition-transform"></i>
+                    <span class="text-xs font-semibold text-slate-300 uppercase tracking-widest">Impacto</span>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- LÓGICA DE INTERACTIVIDAD (JavaScript) -->
+    <script>
+        // 1. Simulación IA Tradicional
+        function runTradSimulation() {
+            const ageInput = document.getElementById('trad-age').value;
+            const output = document.getElementById('trad-output');
+            const age = parseInt(ageInput, 10);
+
+            output.innerHTML = '<i class="fa-solid fa-spinner fa-spin text-slate-500"></i> Calculando...';
+            
+            setTimeout(() => {
+                if (isNaN(age)) {
+                    output.innerHTML = '<span class="text-red-400">Error: Ingresa un número válido.</span>';
+                    return;
+                }
+                if (age >= 18) {
+                    output.innerHTML = 'Output: <span class="text-green-400 font-bold ml-1">"Es mayor de edad"</span>';
+                } else {
+                    output.innerHTML = 'Output: <span class="text-yellow-400 font-bold ml-1">"Es menor de edad"</span>';
+                }
+            }, 400); // Pequeño delay para simular procesamiento
+        }
+
+        // 2. Simulación IA Generativa
+        async function runGenSimulation() {
+            const input = document.getElementById('gen-input');
+            const btn = document.getElementById('gen-btn');
+            const loading = document.getElementById('gen-loading');
+            const output = document.getElementById('gen-output');
+            
+            if(!input.value.trim()) return;
+
+            // Estado de carga
+            btn.disabled = true;
+            btn.classList.add('opacity-50');
+            loading.classList.remove('hidden');
+            output.textContent = '';
+            output.classList.remove('cursor');
+
+            // Simular tiempo de red/procesamiento de LLM
+            await new Promise(r => setTimeout(r, 1200));
+
+            loading.classList.add('hidden');
+            output.classList.add('cursor');
+
+            // Texto de respuesta hardcodeado pero con efecto máquina de escribir
+            const responseText = "La ciberseguridad es la práctica de proteger sistemas, redes y programas de ataques digitales y robos.";
+            let i = 0;
+            
+            function typeWriter() {
+                if (i < responseText.length) {
+                    output.textContent += responseText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 30); // Velocidad de escritura
+                } else {
+                    output.classList.remove('cursor');
+                    btn.disabled = false;
+                    btn.classList.remove('opacity-50');
+                }
+            }
+            
+            typeWriter();
+        }
+
+        // 3. Simulación IA Agéntica
+        async function runAgentSimulation() {
+            const btn = document.getElementById('agent-btn');
+            const steps = document.querySelectorAll('.agent-step');
+            const icons = document.querySelectorAll('.agent-icon');
+            const containers = document.querySelectorAll('.agent-icon-container');
+            const texts = document.querySelectorAll('.agent-text');
+
+            // Prevenir doble clic
+            if(btn.disabled) return;
+            
+            // Reset state
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-1"></i> Ejecutando...';
+            btn.classList.replace('bg-emerald-600', 'bg-zinc-700');
+
+            // Limpiar pasos anteriores
+            steps.forEach((step, i) => {
+                step.classList.replace('opacity-100', 'opacity-50');
+                icons[i].className = 'fa-solid fa-circle text-[8px] text-zinc-700 agent-icon';
+                containers[i].classList.replace('border-emerald-500', 'border-zinc-700');
+                texts[i].classList.replace('text-white', 'text-slate-400');
+            });
+
+            // Ejecutar pasos secuencialmente
+            for (let i = 0; i < steps.length; i++) {
+                // Estado "Pensando/Ejecutando"
+                steps[i].classList.replace('opacity-50', 'opacity-100');
+                icons[i].className = 'fa-solid fa-spinner fa-spin text-emerald-400 agent-icon text-[10px]';
+                containers[i].classList.replace('border-zinc-700', 'border-emerald-500/50');
+                texts[i].classList.replace('text-slate-400', 'text-emerald-100');
+                
+                // Simular tiempo de tarea
+                await new Promise(r => setTimeout(r, 1200 + Math.random() * 800)); // Delay aleatorio
+
+                // Estado "Completado"
+                icons[i].className = 'fa-solid fa-check text-emerald-400 agent-icon text-[10px]';
+                containers[i].classList.replace('border-emerald-500/50', 'border-emerald-500');
+            }
+
+            // Finalizado
+            btn.innerHTML = '<i class="fa-solid fa-rotate-right mr-1"></i> Reiniciar';
+            btn.classList.replace('bg-zinc-700', 'bg-emerald-600');
+            btn.disabled = false;
+        }
+
+        // --- Intersection Observer para animaciones On Scroll ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            const revealOnScroll = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); // Solo animar una vez
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            });
+
+            reveals.forEach(reveal => revealOnScroll.observe(reveal));
+        });
+    </script>
+</body>
+</html>
