@@ -92,13 +92,45 @@
             La Evolución de la <br class="hidden md:block"/>
             <span class="bg-gradient-to-r from-blue-400 via-purple-400 to-emerald-400 gradient-text">Inteligencia Artificial</span>
         </h1>
-        <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed">
+        <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto leading-relaxed mb-12">
             Explora de manera interactiva el viaje desde los sistemas basados en reglas hasta los agentes autónomos capaces de ejecutar acciones.
         </p>
+
+        <!-- Créditos y Autores (Añadido) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto text-left">
+            <!-- Docente -->
+            <div class="glass-panel rounded-2xl p-5 border border-white/5 flex items-center gap-5 transition-transform hover:-translate-y-1 duration-300">
+                <div class="w-14 h-14 rounded-full bg-indigo-500/10 flex flex-shrink-0 items-center justify-center text-indigo-400 border border-indigo-500/20">
+                    <i class="fa-solid fa-chalkboard-user text-xl"></i>
+                </div>
+                <div>
+                    <p class="text-xs text-indigo-300 uppercase tracking-widest font-bold mb-1">Docente</p>
+                    <p class="text-slate-200 font-medium text-lg">Mg. Ing. Hugo Espetia Huamanga</p>
+                </div>
+            </div>
+            <!-- Equipo de Investigación -->
+            <div class="glass-panel rounded-2xl p-5 border border-white/5 transition-transform hover:-translate-y-1 duration-300 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-red-500/10 rounded-full blur-2xl pointer-events-none"></div>
+                <div class="flex items-start gap-4 mb-3 relative z-10">
+                    <div class="w-10 h-10 rounded-full bg-red-500/10 flex items-center justify-center text-red-400 border border-red-500/20 flex-shrink-0">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-red-300 uppercase tracking-widest font-bold mb-1">Equipo de Investigación</p>
+                        <p class="text-white font-bold text-sm bg-red-500/20 inline-block px-2 py-0.5 rounded border border-red-500/30">VIVA EL APRA</p>
+                    </div>
+                </div>
+                <ul class="text-sm text-slate-300 space-y-1.5 pl-[3.5rem] relative z-10 font-medium">
+                    <li><span class="text-red-400 mr-2">•</span>Atayupanqui Sanz Nicolae Moshe</li>
+                    <li><span class="text-red-400 mr-2">•</span>Machaca Huillca Edwin</li>
+                    <li><span class="text-red-400 mr-2">•</span>Ochoa Martinez Diego Gabriel</li>
+                </ul>
+            </div>
+        </div>
     </header>
 
     <!-- Main Content Grid -->
-    <main class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-3 gap-6 px-4 pb-20">
+    <main class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-3 gap-6 px-4 pb-12">
 
         <!-- ==========================================
              1️⃣ IA TRADICIONAL
@@ -286,6 +318,65 @@
 
     </main>
 
+    <!-- ==========================================
+         📊 TABLA COMPARATIVA (Añadido)
+    =========================================== -->
+    <section class="max-w-7xl mx-auto w-full px-4 mb-16 reveal">
+        <div class="glass-panel rounded-3xl p-6 md:p-10 relative overflow-hidden">
+            <!-- Deco Blur -->
+            <div class="absolute -top-20 -right-20 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+            <h2 class="text-2xl md:text-3xl font-bold text-white mb-8 flex items-center gap-3 relative z-10">
+                <i class="fa-solid fa-chart-simple text-blue-400"></i> 📊 Diferencias Clave
+            </h2>
+            
+            <div class="overflow-x-auto relative z-10 pb-4">
+                <table class="w-full text-left border-collapse min-w-[700px]">
+                    <thead>
+                        <tr class="border-b border-white/10 text-slate-400 text-sm md:text-base uppercase tracking-wider bg-black/20">
+                            <th class="p-4 font-semibold rounded-tl-xl">Característica</th>
+                            <th class="p-4 font-semibold text-center text-blue-400">IA Tradicional</th>
+                            <th class="p-4 font-semibold text-center text-purple-400">IA Generativa</th>
+                            <th class="p-4 font-semibold text-center text-emerald-400 rounded-tr-xl">IA Agéntica</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm md:text-base text-slate-300 divide-y divide-white/5 bg-black/10">
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="p-4 font-medium text-white">Crea contenido</td>
+                            <td class="p-4 text-center"><i class="fa-solid fa-xmark text-red-500 text-lg"></i></td>
+                            <td class="p-4 text-center"><i class="fa-solid fa-check text-emerald-400 text-lg"></i></td>
+                            <td class="p-4 text-center"><i class="fa-solid fa-check text-emerald-400 text-lg"></i></td>
+                        </tr>
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="p-4 font-medium text-white">Toma decisiones autónomas</td>
+                            <td class="p-4 text-center"><i class="fa-solid fa-xmark text-red-500 text-lg"></i></td>
+                            <td class="p-4 text-center font-medium text-yellow-400 bg-yellow-400/10 rounded-full px-2 py-1 inline-flex items-center mt-2">Parcial</td>
+                            <td class="p-4 text-center"><i class="fa-solid fa-check text-emerald-400 text-lg"></i></td>
+                        </tr>
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="p-4 font-medium text-white">Usa reglas fijas</td>
+                            <td class="p-4 text-center"><i class="fa-solid fa-check text-emerald-400 text-lg"></i></td>
+                            <td class="p-4 text-center"><i class="fa-solid fa-xmark text-red-500 text-lg"></i></td>
+                            <td class="p-4 text-center"><i class="fa-solid fa-xmark text-red-500 text-lg"></i></td>
+                        </tr>
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="p-4 font-medium text-white">Aprende patrones</td>
+                            <td class="p-4 text-center text-blue-300 font-medium">Limitado</td>
+                            <td class="p-4 text-center text-purple-300 font-medium">Avanzado</td>
+                            <td class="p-4 text-center text-emerald-300 font-medium">Avanzado</td>
+                        </tr>
+                        <tr class="hover:bg-white/5 transition-colors">
+                            <td class="p-4 font-medium text-white rounded-bl-xl">Ejecuta acciones</td>
+                            <td class="p-4 text-center"><i class="fa-solid fa-xmark text-red-500 text-lg"></i></td>
+                            <td class="p-4 text-center"><i class="fa-solid fa-xmark text-red-500 text-lg"></i></td>
+                            <td class="p-4 text-center"><i class="fa-solid fa-check text-emerald-400 text-lg rounded-br-xl"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer / Conclusión -->
     <footer class="max-w-7xl mx-auto w-full px-4 mb-16 reveal">
         <div class="glass-panel rounded-3xl p-8 md:p-12 relative overflow-hidden border-t border-t-white/10 text-center">
@@ -294,7 +385,7 @@
             <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
 
             <h2 class="text-3xl font-bold text-white mb-10 flex items-center justify-center gap-3">
-                <i class="fa-solid fa-chart-line text-indigo-400"></i> Conclusión del Progreso
+                <i class="fa-solid fa-flag-checkered text-indigo-400"></i> Conclusión del Progreso
             </h2>
 
             <!-- Timeline Visual Evolutiva -->
