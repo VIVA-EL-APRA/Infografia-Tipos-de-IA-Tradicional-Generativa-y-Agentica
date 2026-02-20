@@ -1,0 +1,1 @@
+# Infografia-Tipos-de-IA-Tradicional-Generativa-y-Agentica
