@@ -68,6 +68,23 @@
             animation: blink 1s step-start infinite;
         }
         @keyframes blink { 50% { opacity: 0; } }
+
+        /* Animación para el voucher de la IA Agéntica */
+        @keyframes slideDownFade {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .voucher-reveal {
+            animation: slideDownFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        
+        /* Patrón de ticket rasgado */
+        .ticket-edge {
+            background-image: radial-gradient(circle at 4px 0, transparent 4px, rgba(16, 185, 129, 0.1) 4px);
+            background-size: 10px 100%;
+            background-position: top;
+            background-repeat: repeat-x;
+        }
     </style>
 </head>
 <body class="antialiased min-h-screen flex flex-col font-sans selection:bg-indigo-500/30">
@@ -130,7 +147,7 @@
     </header>
 
     <!-- ==========================================
-         ⏳ EVOLUCIÓN HISTÓRICA (Añadido)
+         ⏳ EVOLUCIÓN HISTÓRICA
     =========================================== -->
     <section class="max-w-7xl mx-auto w-full px-4 mb-16 reveal">
         <div class="glass-panel rounded-3xl p-6 md:p-10 relative overflow-hidden">
@@ -323,7 +340,7 @@
         </article>
 
         <!-- ==========================================
-             3️⃣ IA AGÉNTICA
+             3️⃣ IA AGÉNTICA (¡MEJORADA!)
         =========================================== -->
         <article class="glass-panel card-hover-agent rounded-3xl p-6 md:p-8 relative transition-all duration-500 reveal delay-300 flex flex-col h-full lg:col-span-1 md:col-span-2">
             <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-600 to-green-400"></div>
@@ -336,63 +353,106 @@
             </div>
 
             <p class="text-slate-300 text-sm mb-6 leading-relaxed flex-grow">
-                <strong class="text-emerald-300">Sistemas Autónomos:</strong> No solo responde, sino que actúa. <span class="opacity-70">Toma decisiones, planifica pasos, usa herramientas externas y APIs para cumplir un objetivo.</span>
+                <strong class="text-emerald-300">Sistemas Autónomos:</strong> No solo responde, sino que actúa. <span class="opacity-70">Toma decisiones, planifica pasos, usa herramientas externas y APIs para cumplir un objetivo y generar resultados tangibles.</span>
             </p>
 
-            <div class="space-y-4 mb-6">
+            <div class="space-y-4 mb-4">
                 <div class="flex flex-wrap gap-2">
-                    <span class="px-3 py-1 rounded-full bg-emerald-950/50 border border-emerald-900 text-xs text-emerald-200">AutoGPT</span>
-                    <span class="px-3 py-1 rounded-full bg-emerald-950/50 border border-emerald-900 text-xs text-emerald-200">APIs</span>
-                    <span class="px-3 py-1 rounded-full bg-emerald-950/50 border border-emerald-900 text-xs text-emerald-200">Multi-Agente</span>
+                    <span class="px-3 py-1 rounded-full bg-emerald-950/50 border border-emerald-900 text-xs text-emerald-200">Toma de Decisiones</span>
+                    <span class="px-3 py-1 rounded-full bg-emerald-950/50 border border-emerald-900 text-xs text-emerald-200">Uso de APIs</span>
+                    <span class="px-3 py-1 rounded-full bg-emerald-950/50 border border-emerald-900 text-xs text-emerald-200">Agentes Autónomos</span>
                 </div>
-                <ul class="text-sm text-slate-400 space-y-2">
-                    <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Asistentes ejecutivos autónomos</li>
-                    <li><i class="fa-solid fa-check text-emerald-500 mr-2"></i> Automatización de procesos complejos</li>
-                </ul>
             </div>
 
             <!-- INTERACCIÓN 3 -->
             <div class="mt-auto bg-black/40 rounded-xl p-1 border border-white/5">
                 <div class="bg-zinc-900 rounded-lg p-4 text-sm relative overflow-hidden">
                     <div class="mb-4 flex items-center justify-between">
-                        <span class="text-xs bg-slate-800 text-slate-300 px-2 py-1 rounded font-mono border border-slate-700 flex-grow mr-3 truncate" title="Objetivo: Viaje a Cusco con $500">
-                            > Objetivo: Viaje a Cusco
+                        <span class="text-xs bg-slate-800 text-emerald-300 px-2 py-1.5 rounded font-mono border border-slate-700 flex-grow mr-3 truncate shadow-inner">
+                            > Objetivo: Viaje a Cusco (Ppto: $500)
                         </span>
-                        <button id="agent-btn" onclick="runAgentSimulation()" class="bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1.5 rounded text-xs transition-colors flex-shrink-0 font-medium">
-                            <i class="fa-solid fa-power-off mr-1"></i> Iniciar
+                        <button id="agent-btn" onclick="runAgentSimulation()" class="bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1.5 rounded text-xs transition-colors flex-shrink-0 font-medium shadow-lg shadow-emerald-500/20">
+                            <i class="fa-solid fa-power-off mr-1"></i> Ejecutar Agente
                         </button>
                     </div>
 
-                    <div class="space-y-3 relative pl-2 before:absolute before:inset-y-0 before:left-3.5 before:w-px before:bg-zinc-800">
+                    <div class="space-y-3 relative pl-2 before:absolute before:inset-y-0 before:left-3.5 before:w-px before:bg-zinc-800 pb-2">
                         <!-- Step 1 -->
                         <div class="relative flex items-center gap-3 agent-step opacity-50 transition-opacity">
                             <div class="w-4 h-4 rounded-full bg-zinc-900 border-2 border-zinc-700 flex items-center justify-center z-10 agent-icon-container">
                                 <i class="fa-solid fa-circle text-[8px] text-zinc-700 agent-icon"></i>
                             </div>
-                            <span class="text-xs text-slate-400 agent-text">Buscar vuelos en API</span>
+                            <span class="text-xs text-slate-400 agent-text font-mono">1. Analizar vuelos (API Skyscanner)</span>
                         </div>
                         <!-- Step 2 -->
                         <div class="relative flex items-center gap-3 agent-step opacity-50 transition-opacity">
                             <div class="w-4 h-4 rounded-full bg-zinc-900 border-2 border-zinc-700 flex items-center justify-center z-10 agent-icon-container">
                                 <i class="fa-solid fa-circle text-[8px] text-zinc-700 agent-icon"></i>
                             </div>
-                            <span class="text-xs text-slate-400 agent-text">Comparar precios y hotel</span>
+                            <span class="text-xs text-slate-400 agent-text font-mono">2. Filtrar Hoteles < $200 (API Booking)</span>
                         </div>
                         <!-- Step 3 -->
                         <div class="relative flex items-center gap-3 agent-step opacity-50 transition-opacity">
                             <div class="w-4 h-4 rounded-full bg-zinc-900 border-2 border-zinc-700 flex items-center justify-center z-10 agent-icon-container">
                                 <i class="fa-solid fa-circle text-[8px] text-zinc-700 agent-icon"></i>
                             </div>
-                            <span class="text-xs text-slate-400 agent-text">Generar itinerario</span>
+                            <span class="text-xs text-slate-400 agent-text font-mono">3. Ajustar presupuesto y generar plan</span>
                         </div>
                         <!-- Step 4 -->
                         <div class="relative flex items-center gap-3 agent-step opacity-50 transition-opacity">
                             <div class="w-4 h-4 rounded-full bg-zinc-900 border-2 border-zinc-700 flex items-center justify-center z-10 agent-icon-container">
                                 <i class="fa-solid fa-circle text-[8px] text-zinc-700 agent-icon"></i>
                             </div>
-                            <span class="text-xs text-slate-400 agent-text">Comprar y Enviar Email</span>
+                            <span class="text-xs text-slate-400 agent-text font-mono">4. Ejecutar pago y emitir reserva</span>
                         </div>
                     </div>
+
+                    <!-- EVIDENCIA DEL AGENTE (Oculta al inicio) -->
+                    <div id="agent-result" class="hidden mt-3 pt-4 border-t border-zinc-700/50">
+                        <div class="bg-emerald-950/40 border border-emerald-500/40 rounded-lg flex flex-col relative overflow-hidden shadow-[0_0_20px_rgba(16,185,129,0.15)]">
+                            <!-- Decoración superior del voucher -->
+                            <div class="h-2 w-full ticket-edge"></div>
+                            
+                            <div class="p-4 relative z-10">
+                                <div class="absolute right-2 top-2 text-emerald-500/20 text-5xl pointer-events-none">
+                                    <i class="fa-solid fa-ticket"></i>
+                                </div>
+                                
+                                <h4 class="text-emerald-400 font-bold text-sm mb-3 flex items-center gap-2">
+                                    <i class="fa-solid fa-circle-check"></i> Transacción Exitosa
+                                </h4>
+                                
+                                <div class="space-y-2 text-xs font-mono">
+                                    <div class="flex justify-between items-center bg-black/30 p-1.5 rounded">
+                                        <span class="text-slate-300"><i class="fa-solid fa-plane-departure mr-2 text-blue-400"></i>Vuelo LIM ➔ CUZ</span>
+                                        <span class="text-white font-medium">$125.00</span>
+                                    </div>
+                                    <div class="flex justify-between items-center bg-black/30 p-1.5 rounded">
+                                        <span class="text-slate-300"><i class="fa-solid fa-hotel mr-2 text-purple-400"></i>Hotel (3 Noches)</span>
+                                        <span class="text-white font-medium">$210.00</span>
+                                    </div>
+                                    
+                                    <div class="flex justify-between items-center border-t border-emerald-500/30 pt-2 mt-2">
+                                        <span class="text-slate-400">Presupuesto Original:</span>
+                                        <span class="text-slate-400 line-through decoration-red-500/50">$500.00</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-emerald-300 font-bold">Ahorro / Sobrante:</span>
+                                        <span class="text-emerald-400 font-extrabold text-sm bg-emerald-500/20 px-2 py-0.5 rounded border border-emerald-500/30">$165.00</span>
+                                    </div>
+                                </div>
+
+                                <!-- Barcode Mock -->
+                                <div class="mt-4 flex items-center justify-between opacity-70">
+                                    <div class="flex gap-[2px] h-6 items-end">
+                                        <div class="w-1.5 h-6 bg-emerald-500"></div><div class="w-1 h-6 bg-emerald-500"></div><div class="w-2 h-6 bg-emerald-500"></div><div class="w-1 h-6 bg-emerald-500"></div><div class="w-3 h-6 bg-emerald-500"></div><div class="w-1.5 h-6 bg-emerald-500"></div><div class="w-1 h-6 bg-emerald-500"></div><div class="w-2 h-6 bg-emerald-500"></div><div class="w-1 h-6 bg-emerald-500"></div><div class="w-1 h-6 bg-emerald-500"></div><div class="w-2 h-6 bg-emerald-500"></div>
+                                    </div>
+                                    <span class="text-[10px] font-mono text-emerald-500/80">ID: AGT-84X92</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </article>
@@ -466,7 +526,7 @@
             <div class="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
 
             <h2 class="text-3xl font-bold text-white mb-10 flex items-center justify-center gap-3">
-                <i class="fa-solid fa-flag-checkered text-indigo-400"></i> Conclusión
+                <i class="fa-solid fa-flag-checkered text-indigo-400"></i> Conclusión del Progreso
             </h2>
 
             <!-- Timeline Visual Evolutiva -->
@@ -604,6 +664,7 @@
             const icons = document.querySelectorAll('.agent-icon');
             const containers = document.querySelectorAll('.agent-icon-container');
             const texts = document.querySelectorAll('.agent-text');
+            const resultBox = document.getElementById('agent-result');
 
             // Prevenir doble clic
             if(btn.disabled) return;
@@ -612,35 +673,52 @@
             btn.disabled = true;
             btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin mr-1"></i> Ejecutando...';
             btn.classList.replace('bg-emerald-600', 'bg-zinc-700');
+            btn.classList.replace('hover:bg-emerald-500', 'hover:bg-zinc-600');
+            btn.classList.remove('shadow-lg', 'shadow-emerald-500/20');
+            
+            // Ocultar resultado si estaba visible
+            resultBox.classList.add('hidden');
+            resultBox.classList.remove('voucher-reveal');
 
             // Limpiar pasos anteriores
             steps.forEach((step, i) => {
                 step.classList.replace('opacity-100', 'opacity-50');
                 icons[i].className = 'fa-solid fa-circle text-[8px] text-zinc-700 agent-icon';
                 containers[i].classList.replace('border-emerald-500', 'border-zinc-700');
-                texts[i].classList.replace('text-white', 'text-slate-400');
+                texts[i].classList.replace('text-emerald-300', 'text-slate-400');
+                texts[i].classList.replace('font-bold', 'font-normal');
             });
 
             // Ejecutar pasos secuencialmente
             for (let i = 0; i < steps.length; i++) {
                 // Estado "Pensando/Ejecutando"
                 steps[i].classList.replace('opacity-50', 'opacity-100');
-                icons[i].className = 'fa-solid fa-spinner fa-spin text-emerald-400 agent-icon text-[10px]';
+                icons[i].className = 'fa-solid fa-cog fa-spin text-emerald-400 agent-icon text-[10px]';
                 containers[i].classList.replace('border-zinc-700', 'border-emerald-500/50');
                 texts[i].classList.replace('text-slate-400', 'text-emerald-100');
                 
-                // Simular tiempo de tarea
-                await new Promise(r => setTimeout(r, 1200 + Math.random() * 800)); // Delay aleatorio
+                // Simular tiempo de tarea conectandose a supuestas APIs
+                await new Promise(r => setTimeout(r, 900 + Math.random() * 600)); 
 
                 // Estado "Completado"
                 icons[i].className = 'fa-solid fa-check text-emerald-400 agent-icon text-[10px]';
                 containers[i].classList.replace('border-emerald-500/50', 'border-emerald-500');
+                texts[i].classList.replace('text-emerald-100', 'text-emerald-300');
+                texts[i].classList.add('font-bold');
             }
 
-            // Finalizado
-            btn.innerHTML = '<i class="fa-solid fa-rotate-right mr-1"></i> Reiniciar';
-            btn.classList.replace('bg-zinc-700', 'bg-emerald-600');
-            btn.disabled = false;
+            // Mostrar EVIDENCIA (El Voucher)
+            setTimeout(() => {
+                resultBox.classList.remove('hidden');
+                resultBox.classList.add('voucher-reveal'); // Animar entrada
+                
+                // Finalizado: Cambiar botón
+                btn.innerHTML = '<i class="fa-solid fa-rotate-right mr-1"></i> Reiniciar Agente';
+                btn.classList.replace('bg-zinc-700', 'bg-emerald-600');
+                btn.classList.replace('hover:bg-zinc-600', 'hover:bg-emerald-500');
+                btn.classList.add('shadow-lg', 'shadow-emerald-500/20');
+                btn.disabled = false;
+            }, 500);
         }
 
         // --- Intersection Observer para animaciones On Scroll ---
